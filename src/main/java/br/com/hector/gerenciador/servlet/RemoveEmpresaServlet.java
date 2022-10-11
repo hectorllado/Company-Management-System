@@ -1,14 +1,15 @@
 package br.com.hector.gerenciador.servlet;
 
+import br.com.hector.gerenciador.modelo.Banco;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
 
-@WebServlet("/removeEmpresa")
+//@WebServlet("/removeEmpresa")
 public class RemoveEmpresaServlet extends HttpServlet {
 
     @Override

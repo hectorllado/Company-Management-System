@@ -1,4 +1,4 @@
-package br.com.hector.gerenciador.servlet;
+package br.com.hector.gerenciador.modelo;
 
 import java.util.Date;
 

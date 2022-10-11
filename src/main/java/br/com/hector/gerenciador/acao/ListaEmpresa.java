@@ -1,29 +1,35 @@
-package br.com.hector.gerenciador.servlet;
+package br.com.hector.gerenciador.acao;
 
 import br.com.hector.gerenciador.modelo.Banco;
 import br.com.hector.gerenciador.modelo.Empresa;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.List;
 
-//@WebServlet("/listaEmpresas")
-public class ListaEmpresasServlet extends HttpServlet {
+public class ListaEmpresa implements Acao {
 
-    @Override
-    protected void service(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    public String executa(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+
+        HttpSession session = req.getSession();
+        if(session.getAttribute("usuarioLogado") == null) {
+            return "redirect:entrada?acao=LoginForm";
+        }
+
+
         Banco banco = new Banco();
         List<Empresa> lista = banco.getEmpresas();
 
-        RequestDispatcher rd = req.getRequestDispatcher("/listaEmpresas.jsp");
+
         req.setAttribute("empresas", lista);
-        rd.forward(req, resp);
+
+        return "forward:listaEmpresas.jsp";
+
 
 
     }

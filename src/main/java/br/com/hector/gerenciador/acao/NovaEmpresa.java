@@ -1,20 +1,15 @@
-package br.com.hector.gerenciador.servlet;
+package br.com.hector.gerenciador.acao;
 
 import br.com.hector.gerenciador.modelo.Banco;
 import br.com.hector.gerenciador.modelo.Empresa;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
 import java.io.IOException;
 
-//@WebServlet("/novaEmpresa")
-public class NovaEmpresaServlet extends HttpServlet {
-
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+public class NovaEmpresa implements Acao {
+    public String executa(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         System.out.println("Cadastrando nova empresa");
         //pela na propria URL
         String nomeEmpresa = request.getParameter("nome");
@@ -33,7 +28,6 @@ public class NovaEmpresaServlet extends HttpServlet {
 //        rd.forward(request, response);
 
         //client-side redirect, pelo navegador. Devolve um codigo 301 ou 302.
-        response.sendRedirect("listaEmpresas");
-
+        return "redirect:entrada?acao=ListaEmpresa";
     }
 }

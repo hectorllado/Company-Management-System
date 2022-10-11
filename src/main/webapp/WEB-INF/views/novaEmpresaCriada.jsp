@@ -9,6 +9,7 @@ String nomeEmpresa = (String)request.getAttribute("empresa");
     <title>Nova Empresa Criada</title>
 </head>
 <body>
+<c:import url="logout-parcial.jsp"/>
     Empresa <%= nomeEmpresa %> cadastrada com sucesso!<br>
 
 </body>

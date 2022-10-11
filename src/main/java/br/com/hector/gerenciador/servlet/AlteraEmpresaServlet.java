@@ -1,11 +1,14 @@
 package br.com.hector.gerenciador.servlet;
 
+import br.com.hector.gerenciador.modelo.Banco;
+import br.com.hector.gerenciador.modelo.Empresa;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
 import java.io.IOException;
 
-@WebServlet("/alteraEmpresa")
+//@WebServlet("/alteraEmpresa")
 public class AlteraEmpresaServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,7 +23,7 @@ public class AlteraEmpresaServlet extends HttpServlet {
 
         empresa.setNome(nomeEmpresa);
 
-        response.sendRedirect("listaEmpresas");
+        response.sendRedirect("entrada?acao=listaEmpresas");
     }
 
 }

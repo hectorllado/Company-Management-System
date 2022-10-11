@@ -1,4 +1,4 @@
-package br.com.hector.gerenciador.servlet;
+package br.com.hector.gerenciador.modelo;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -7,6 +7,7 @@ import java.util.List;
 public class Banco {
 
     private static List<Empresa> lista = new ArrayList<Empresa>();
+    private static List<Usuario> usuarios = new ArrayList<>();
     private static Integer chaveSequencial = 1;
 
     static {
@@ -19,6 +20,17 @@ public class Banco {
 
         lista.add(empresa);
         lista.add(empresa2);
+
+        Usuario u1 = new Usuario();
+        u1.setLogin("hector");
+        u1.setSenha("12345");
+        Usuario u2 = new Usuario();
+        u2.setLogin("aline");
+        u2.setSenha("54321");
+
+        usuarios.add(u1);
+        usuarios.add(u2);
+
 
     }
 
@@ -49,6 +61,16 @@ public class Banco {
              lista) {
             if(emp.getId() == id) {
                 return emp;
+            }
+        }
+        return null;
+    }
+
+    public Usuario existeUsuario(String login, String senha) {
+        for (Usuario usuario:
+             usuarios) {
+            if(usuario.ehIgual(login,senha)) {
+                return usuario;
             }
         }
         return null;
